@@ -2,8 +2,8 @@
 
 namespace Selenium.core.browsers
 {
-    public interface IBrowserWebDriver<out T> where T : IWebDriver
-    {
-        IBrowser<T> Create();
-    }
+	public interface IBrowserWebDriver<out T> where T : IWebDriver
+	{
+		IBrowser<T> Create();
+	}
 }

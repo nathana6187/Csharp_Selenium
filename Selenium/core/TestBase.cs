@@ -1,25 +1,26 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Selenium.core.browsers;
+using System;
 
 namespace Selenium.core
 {
-    [SetUpFixture]
-    public class TestBase
-    {
-        private readonly Lazy<BrowserFactory> _factory = new Lazy<BrowserFactory>();
-        protected IBrowser Driver;
+	[SetUpFixture]
+	public class TestBase
+	{
+		private readonly Lazy<BrowserFactory> _factory = new Lazy<BrowserFactory>();
+		protected IBrowser Driver;
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
-        {
-            Driver = _factory.Value.GetBrowser(Config.Browser);
-        }
+		[OneTimeSetUp]
+		public void OneTimeSetUp()
+		{
+			Driver = _factory.Value.GetBrowser(Config.Browser);
+		}
 
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            Driver.Page.Quit();
-        }
-    }
+		[OneTimeTearDown]
+		public void OneTimeTearDown()
+		{
+			Driver.Page.Quit();
+			Driver.Page.Dispose();
+		}
+	}
 }
