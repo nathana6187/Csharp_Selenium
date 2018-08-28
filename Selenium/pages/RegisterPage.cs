@@ -3,16 +3,12 @@ using System;
 
 namespace Selenium.pages
 {
-	public class RegisterPage
+	public class RegisterPage : BasePage
 	{
-		private readonly IBrowser _browser;
+		public RegisterPage(IBrowser browser, string url = "") : base(browser, url)
+		{}
 
-		public RegisterPage(IBrowser browser)
-		{
-			_browser = browser;
-		}
-
-		public void CreateAccount()
+		public void CreateSomething()
 		{
 			Console.WriteLine("Creating an account");
 		}

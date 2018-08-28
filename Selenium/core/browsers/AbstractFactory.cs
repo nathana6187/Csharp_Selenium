@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 
@@ -16,18 +15,12 @@ namespace Selenium.core.browsers
 		{
 			_browsers.Add(BrowserType.Chrome, Chrome);
 			_browsers.Add(BrowserType.Firefox, Firefox);
-			_browsers.Add(BrowserType.Remote, Remote);
 		}
 
 		public IBrowser Create<T>() where T : IWebDriver
 		{
 			var factoryMethod = this as IBrowserWebDriver<T>;
 			return factoryMethod?.Create();
-		}
-
-		private IBrowser Remote()
-		{
-			return Create<RemoteWebDriver>();
 		}
 
 		private IBrowser Chrome()
@@ -42,13 +35,9 @@ namespace Selenium.core.browsers
 
 		public IBrowser GetBrowser(BrowserType type)
 		{
-			return Config.RemoteBrowser && Config.UseSauceLabs ||
-				   Config.RemoteBrowser && Config.UseBrowserstack ||
-				   Config.RemoteBrowser && Config.UseSeleniumGrid
-				? _browsers[BrowserType.Remote].Invoke()
-				: (_browsers.ContainsKey(type)
+			return _browsers.ContainsKey(type)
 					? _browsers[type].Invoke()
-					: _browsers[BrowserType.Firefox].Invoke());
+					: _browsers[BrowserType.Firefox].Invoke();
 		}
 	}
 }

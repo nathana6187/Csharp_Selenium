@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using Selenium.core;
 using Selenium.pages;
 
@@ -11,8 +12,9 @@ namespace Selenium.tests
 		[Test]
 		public void TestMethod()
 		{
-			var page = new HomePage(Driver);
-			page.Register().CreateAccount();
+			var gp = new GooglePage(Driver);
+			gp.GoTo();
+			gp.Search("stuff");
 		}
 	}
 }

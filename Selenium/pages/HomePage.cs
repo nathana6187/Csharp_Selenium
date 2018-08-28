@@ -3,41 +3,37 @@ using System;
 
 namespace Selenium.pages
 {
-	public class HomePage
+	public class HomePage : BasePage
 	{
-		private readonly IBrowser _browser;
-
-		public HomePage(IBrowser browser)
-		{
-			_browser = browser;
-		}
+		public HomePage(IBrowser browser, string url = "") : base(browser, url)
+		{}
 
 		public RegisterPage Register()
 		{
 			Console.WriteLine("Navigating to Register page");
-			_browser.Page.GoToUrl("http://www.google.com");
-			return new RegisterPage(_browser);
+			Driver.Page.GoToUrl("http://www.google.com");
+			return new RegisterPage(Driver, Url);
 		}
 
 		public RegisterPage OpenYahooPage()
 		{
 			Console.WriteLine("Navigating to Yahoo page");
-			_browser.Page.GoToUrl("http://www.yahoo.com");
-			return new RegisterPage(_browser);
+			Driver.Page.GoToUrl("http://www.yahoo.com");
+			return new RegisterPage(Driver, Url);
 		}
 
 		public RegisterPage OpenGooglePage()
 		{
 			Console.WriteLine("Navigating to Google page");
-			_browser.Page.GoToUrl("http://www.google.com");
-			return new RegisterPage(_browser);
+			Driver.Page.GoToUrl("http://www.google.com");
+			return new RegisterPage(Driver, Url);
 		}
 
 		public RegisterPage OpenGithubPage()
 		{
 			Console.WriteLine("Navigating to Github page");
-			_browser.Page.GoToUrl("http://www.github.com");
-			return new RegisterPage(_browser);
+			Driver.Page.GoToUrl("http://www.github.com");
+			return new RegisterPage(Driver, Url);
 		}
 	}
 }

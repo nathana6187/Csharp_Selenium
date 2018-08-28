@@ -80,7 +80,7 @@ namespace Selenium.core
 
 		public void Dispose()
 		{
-			_driver.SwitchTo();
+			_driver.Dispose();
 		}
 	}
 }
