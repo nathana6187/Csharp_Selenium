@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using Selenium.core;
 using Selenium.pages;
 

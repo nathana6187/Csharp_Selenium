@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using Selenium.core.browsers;
 using System;
 
@@ -7,20 +8,20 @@ namespace Selenium.core
 	[SetUpFixture]
 	public class TestBase
 	{
-		private readonly Lazy<BrowserFactory> _factory = new Lazy<BrowserFactory>();
-		protected IBrowser Driver;
+		private readonly BrowserFactory _factory = new BrowserFactory();
+		protected IWebDriver Driver;
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp()
 		{
-			Driver = _factory.Value.GetBrowser(Config.Browser);
+			Driver = _factory.Init(Config.Browser);
 		}
 
 		[OneTimeTearDown]
 		public void OneTimeTearDown()
 		{
-			Driver.Page.Quit();
-			Driver.Page.Dispose();
+			Driver?.Quit();
+			Driver?.Dispose();
 		}
 	}
 }

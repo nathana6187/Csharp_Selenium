@@ -1,25 +1,31 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
 using System.IO;
 
 namespace Selenium.core.browsers
 {
-	public sealed class BrowserFactory :
-		AbstractFactory,
-		IBrowserWebDriver<FirefoxDriver>,
-		IBrowserWebDriver<ChromeDriver>
+	public sealed class BrowserFactory
 	{
-		IBrowser<ChromeDriver> IBrowserWebDriver<ChromeDriver>.Create()
+		public IWebDriver Init(BrowserType browserType)
 		{
-			return new BrowserAdapter<ChromeDriver>(new ChromeDriver(Path.Combine(AppContext.BaseDirectory, "libs")), BrowserType.Chrome);
-		}
-
-		IBrowser<FirefoxDriver> IBrowserWebDriver<FirefoxDriver>.Create()
-		{
-			var service = FirefoxDriverService.CreateDefaultService(Path.Combine(AppContext.BaseDirectory, "libs"));
-			service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-			return new BrowserAdapter<FirefoxDriver>(new FirefoxDriver(service), BrowserType.Firefox);
+			IWebDriver driver = null;
+			switch(browserType)
+			{
+				case BrowserType.Chrome:
+					driver = new ChromeDriver(Path.Combine(AppContext.BaseDirectory, "libs"));
+					break;
+				case BrowserType.Firefox:
+					var service = FirefoxDriverService.CreateDefaultService(Path.Combine(AppContext.BaseDirectory, "libs"));
+					service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+					driver = new FirefoxDriver(service);
+					break;
+				default:
+					driver = new ChromeDriver();
+					break;
+			}
+			return driver;
 		}
 	}
 }

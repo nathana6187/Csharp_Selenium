@@ -5,10 +5,10 @@ namespace Selenium.pages
 {
 	public class BasePage
 	{
-		public IBrowser Driver { get; set; }
+		public IWebDriver Driver { get; set; }
 		public string Url { get; set; }
 
-		public BasePage(IBrowser driver, string url)
+		public BasePage(IWebDriver driver, string url)
 		{
 			Driver = driver;
 			Url = url;
@@ -16,17 +16,17 @@ namespace Selenium.pages
 
 		public void GoTo()
 		{
-			Driver.Page.GoToUrl(Url);
+			Driver.Navigate().GoToUrl(Url);
 		}
 
 		public void EnterText(By by, string text)
 		{
-			Driver.Page.FindElement(by).SendKeys(text);
+			Driver.FindElement(by).SendKeys(text);
 		}
 
 		public void Click(By by)
 		{
-			Driver.Page.FindElement(by).Click();
+			Driver.FindElement(by).Click();
 		}
 	}
 }
