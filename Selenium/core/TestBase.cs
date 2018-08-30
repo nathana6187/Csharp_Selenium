@@ -23,5 +23,11 @@ namespace Selenium.core
 			Driver?.Quit();
 			Driver?.Dispose();
 		}
+
+		[SetUp]
+		public void SetUp()
+		{
+			Driver.Manage().Cookies.DeleteAllCookies();
+		}
 	}
 }

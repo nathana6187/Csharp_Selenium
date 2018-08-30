@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using Selenium.core.browsers;
+using Selenium.core;
 
 namespace Selenium.pages
 {
@@ -14,16 +14,24 @@ namespace Selenium.pages
 			Url = url;
 		}
 
+		/// <summary>
+		/// Goes to the url specified by page class
+		/// </summary>
 		public void GoTo()
 		{
 			Driver.Navigate().GoToUrl(Url);
 		}
-
+		/// <summary>
+		/// Sends keys to specified element
+		/// </summary>
 		public void EnterText(By by, string text)
 		{
 			Driver.FindElement(by).SendKeys(text);
 		}
 
+		/// <summary>
+		/// Clicks specified element
+		/// </summary>
 		public void Click(By by)
 		{
 			Driver.FindElement(by).Click();

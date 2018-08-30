@@ -14,6 +14,10 @@ namespace Selenium.pages
 		public GooglePage(IWebDriver driver, string url = "https://www.google.com") : base(driver, url)
 		{}
 
+		/// <summary>
+		/// Search content on google page
+		/// </summary>
+		/// <param name="content">Items to be searched</param>
 		public void Search(string content)
 		{
 			EnterText(searchBox, content);

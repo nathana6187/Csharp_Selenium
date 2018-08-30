@@ -11,6 +11,7 @@ namespace Selenium.core.browsers
 		public static string Platform => GetValue("Platform");
 		public static string BaseUrl => GetValue("BaseUrl");
 		public static string Username => GetValue("Username");
+
 		public static string Password => GetValue("Password");
 
 		private static string GetValue(string value)

@@ -6,6 +6,9 @@ namespace Selenium.core
 {
 	public static class WebDriverExtensions
 	{
+		/// <summary>
+		/// Extends FindElement to include a wait
+		/// </summary>
 		public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
 		{
 			if (timeoutInSeconds > 0)
