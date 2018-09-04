@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Api.jsonClasses;
 using Api.core;
+using FluentAssertions;
 
 namespace Api.tests
 {
@@ -20,6 +21,7 @@ namespace Api.tests
 				if (response.IsSuccessStatusCode)
 				{
 					var content = await response.Content.ReadAsStringAsync();
+					content.Should().NotBeEmpty();
 					Console.WriteLine(content);
 				}
 				else
@@ -45,8 +47,7 @@ namespace Api.tests
 				if (response.IsSuccessStatusCode)
 				{
 					var responseContent = await response.Content.ReadAsStringAsync();
-					var temp = JsonConvert.DeserializeObject<ToDo>(responseContent);
-					Assert.AreEqual(todo, temp);
+					JsonConvert.DeserializeObject<ToDo>(responseContent).Should().Be(todo);
 					Console.Write(responseContent);
 				}
 				else
@@ -70,7 +71,8 @@ namespace Api.tests
 			{
 				if (response.IsSuccessStatusCode)
 				{
-					var responseContent = await response.Content.ReadAsStringAsync();					
+					var responseContent = await response.Content.ReadAsStringAsync();
+					responseContent.Should().NotBeEmpty();
 					Console.Write(responseContent);
 				}
 				else
