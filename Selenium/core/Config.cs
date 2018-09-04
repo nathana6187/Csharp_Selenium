@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using Selenium.core.browsers;
 
-namespace Selenium.core.browsers
+namespace Selenium.core
 {
 	public class Config
 	{

@@ -17,6 +17,11 @@ The AssemblyInfo.cs file has a property commented out that can be used to contro
 
 # Api
 The Api tests are structured similar to the Selenium as the tests, core, and json are in separate folders.
---stuff about http
+Http calls are using basic http client to call the endpoints, responses will convert to the json class specified.
 The jsonClasses folder contains the class form of json files and will using json serialize to convert the json response of a call 
 to corresponding variables. This allows for easy configuration of the json object for dynamically generating data.
+
+# Command line
+Visual studios has a console command line too called vstest.console.exe which is located 
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe
+note that the version of visual studio used can alter the path slightly (instead of community it could be enterprise or professional)
