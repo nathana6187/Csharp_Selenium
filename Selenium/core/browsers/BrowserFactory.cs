@@ -22,7 +22,7 @@ namespace Selenium.core.browsers
 					driver = new FirefoxDriver(service);
 					break;
 				default:
-					driver = new ChromeDriver();
+					driver = new ChromeDriver(Path.Combine(AppContext.BaseDirectory, "libs"));
 					break;
 			}
 			return driver;
