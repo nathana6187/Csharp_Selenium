@@ -11,7 +11,7 @@ namespace Selenium.tests
 	public class GoogleSearch : TestBase
 	{
 		[Test]
-		public void TestMethod()
+		public void Search()
 		{
 			var gp = new GooglePage(Driver);
 			gp.GoTo();
