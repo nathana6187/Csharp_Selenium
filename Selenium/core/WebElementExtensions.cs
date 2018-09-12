@@ -10,16 +10,16 @@ namespace Selenium.core
 	public static class WebElementExtensions
 	{
 		/// <summary>
-		/// Extends click method with option to wait for ajax to complete.
+		/// Extends click method with option to wait for ajax to complete after clicking.
 		/// </summary>
 		public static void Click(this IWebElement webElement, int timeoutInSeconds)
 		{
+			webElement.Click();
 			RemoteWebElement remoteElement = webElement as RemoteWebElement;
 			if (timeoutInSeconds > 0 && remoteElement != null)
 			{
 				remoteElement.WrappedDriver.WaitAjax(timeoutInSeconds);
 			}
-			webElement.Click();
 		}
 
 		/// <summary>

@@ -23,6 +23,9 @@ namespace Selenium.core
 			return driver.FindElement(by);
 		}
 
+		/// <summary>
+		/// Executes javascript with given script.
+		/// </summary>
 		public static T Execute<T>(this IWebDriver driver, string script)
 		{
 			return (T)((IJavaScriptExecutor)driver).ExecuteScript(script);
