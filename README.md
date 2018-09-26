@@ -20,33 +20,52 @@ https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver > Required Co
 
 ## Best Practices for Running Tests
 For maintaining quality tests it is good to know some best practices which can be referenced here [Best Practices](https://wiki.saucelabs.com/display/DOCS/Best+Practices+for+Running+Tests)
+
 Avoid External Test Dependencies
+
 Avoid Dependencies between Tests to Run Tests in Parallel
+
 Don't Use Brittle Locators in Your Tests
+
 Have a Retry Strategy for Handling Flakes
+
 Keep Functional Tests Separate from Performance Tests
+
 Use Build IDs, Tags, and Names to Identify Your Tests
+
 Use Environment Variables for Authentication Credentials
+
 Use Explicit Waits
+
 Use the Latest Version of Selenium Client Bindings
+
 Use Small, Atomic, Autonomous Tests
+
 Use Page Objects to Model Repeated Interactions and Elements
+
 Use Breakpoints to Diagnose Flaky Tests
+
 Use New Accounts for Each Test
+
 Avoid Leakage of Credentials
+
 Be Aware of the Load on Your Servers
+
 Imperative v. Declarative Test Scenarios
 
 ## Running Tests
 
 ### Command Line
-Visual studios has a console command line too called vstest.console.exe which is located 
+Visual studios has a console command line too called vstest.console.exe which is located
+
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe
-note that the version of visual studio used can alter the path slightly (instead of community it could be enterprise or professional)
+
+Note that the version of visual studio used can alter the path slightly (instead of community it could be enterprise or professional)
 [More Info](https://msdn.microsoft.com/en-us/library/jj155796.aspx?f=255&MSPPError=-2147217396)
 
 ### IDE
 Tests are visible in the Test Explorer window. This can be enabled by going to Test -> Windows -> Test Explorer
+
 Select the tests you wish to run and right-click run selected tests. Can also just run all tests by simply clicking Run All at the top of the window.
 
 ## Dependencies
@@ -56,6 +75,7 @@ NuGet is the package manager for .NET. The NuGet client tools provide the abilit
 The NuGet Gallery is the central package repository used by all package authors and consumers. 
 ```
 ## Directory Structure
+```
 Solution Items: contains the readme file
 API project: contains any api testing and helpers
 	core: contains the core functions or helper classes
@@ -63,7 +83,7 @@ API project: contains any api testing and helpers
 	tests: contains tests
 	AssemblyInfo.cs: used to specify things like parallel tests
 	
-
+```
 
 
 
