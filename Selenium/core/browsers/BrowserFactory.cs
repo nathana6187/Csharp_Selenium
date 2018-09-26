@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 using System;
 using System.IO;
 
@@ -14,15 +15,18 @@ namespace Selenium.core.browsers
 			switch(browserType)
 			{
 				case BrowserType.Chrome:
-					driver = new ChromeDriver(Path.Combine(AppContext.BaseDirectory, "libs"));
+					driver = new ChromeDriver(AppContext.BaseDirectory);
 					break;
 				case BrowserType.Firefox:
-					var service = FirefoxDriverService.CreateDefaultService(Path.Combine(AppContext.BaseDirectory, "libs"));
-					service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+					var service = FirefoxDriverService.CreateDefaultService(AppContext.BaseDirectory);
+					service.FirefoxBinaryPath = Config.FireFoxBinary;
 					driver = new FirefoxDriver(service);
 					break;
+				case BrowserType.IE:
+					driver = new InternetExplorerDriver(AppContext.BaseDirectory);
+					break;
 				default:
-					driver = new ChromeDriver(Path.Combine(AppContext.BaseDirectory, "libs"));
+					driver = new ChromeDriver(AppContext.BaseDirectory);
 					break;
 			}
 			return driver;

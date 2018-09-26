@@ -21,7 +21,7 @@ namespace Selenium.pages
 		public void Search(string content)
 		{
 			EnterText(searchBox, content);
-			Click(searchButton);
+			Click(searchButton, 3);
 			Driver.FindElement(resultStats, 5);
 		}
 	}

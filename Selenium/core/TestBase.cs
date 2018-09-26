@@ -20,6 +20,7 @@ namespace Selenium.core
 		[OneTimeTearDown]
 		public void OneTimeTearDown()
 		{
+			Driver?.Close();
 			Driver?.Quit();
 			Driver?.Dispose();
 		}

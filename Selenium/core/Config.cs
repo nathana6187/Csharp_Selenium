@@ -7,7 +7,8 @@ namespace Selenium.core
 	public class Config
 	{
 		public static BrowserType Browser
-			=> (BrowserType)Enum.Parse(typeof(BrowserType), GetValue("Browser"));
+			=> (BrowserType)Enum.Parse(typeof(BrowserType), GetValue("Browser"), true);
+		public static string FireFoxBinary => GetValue("FireFoxBinary");
 
 		public static string Platform => GetValue("Platform");
 		public static string BaseUrl => GetValue("BaseUrl");

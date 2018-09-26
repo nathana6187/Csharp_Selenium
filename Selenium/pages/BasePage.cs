@@ -32,9 +32,9 @@ namespace Selenium.pages
 		/// <summary>
 		/// Clicks specified element
 		/// </summary>
-		public void Click(By by)
+		public void Click(By by, int timeoutInSeconds = 0)
 		{
-			Driver.FindElement(by).Click();
+			Driver.FindElement(by, timeoutInSeconds).Click();
 		}
 	}
 }

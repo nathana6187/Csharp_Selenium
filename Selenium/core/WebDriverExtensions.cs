@@ -18,7 +18,22 @@ namespace Selenium.core
 			if (timeoutInSeconds > 0)
 			{
 				var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-				return wait.Until(drv => drv.FindElement(by));
+				wait.Until(condition =>
+				{
+					try
+					{
+						var elementToBeDisplayed = driver.FindElement(by);
+						return elementToBeDisplayed.Displayed;
+					}
+					catch (StaleElementReferenceException)
+					{
+						return false;
+					}
+					catch (NoSuchElementException)
+					{
+						return false;
+					}
+				});
 			}
 			return driver.FindElement(by);
 		}
